@@ -1,0 +1,362 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    background: #ededed;
+}
+
+// sass 官网有css 转scss的
+input,
+button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.tip {
+    font-size: 20px;
+    margin: 40px auto 50px;
+    text-align: center;
+}
+
+// @mixin padding-top($val) {
+//     padding-top: $val;
+// }
+$button-primary-color: #d4af7a;
+
+
+@mixin treansf($direction, $val) {
+    @if ($direction== "X") {
+        -webkit-transform: translateX($val);
+        transform: translateX($val);
+    } @else {
+        -webkit-transform: translateY($val);
+        transform: translateY($val);
+    }
+}
+@mixin transl3d($x, $y, $z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+}
+@mixin transit($time, $S-effects) {
+    @if ($S-effects == "") {
+        transition: -webkit-transform $time;
+        transition: transform $time;
+        transition: transform $time, -webkit-transform $time;
+    } @else {
+        transition: -webkit-transform $time $S-effects;
+        transition: transform $time $S-effects;
+        transition: transform $time $S-effects, -webkit-transform $time $S-effects;
+    }
+}
+
+.ant-form-item-control-input-content {
+    display: flex;
+    /* align-items: flex-end; */
+    /* align-content: space-around; */
+    justify-content:center;
+}
+
+.ant-checkbox-wrapper{
+    padding-top: 10px;
+}
+canvas{
+    margin-left: 10px;
+}
+.ant-form-item-label > label{
+    justify-content: flex-end;
+    display: flex;
+    margin: 0 !important;
+    width: auto;
+}
+.loginsubmit{
+    background: #d4af7a;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    border-color: #d4af7a;
+}
+#canvas {
+    float: right;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ant-form-item-control-input-content {
+    display: flex;
+}
+.ant-form-item-label > label {
+    justify-content: flex-end;
+    display: flex;
+    margin: 0 !important;
+    width: auto;
+}
+
+.loginsubmit {
+    background: $button-primary-color;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    border-color: $button-primary-color;
+}
+
+//放在这里样式优先级低？
+.img__btn span.m--in {
+    @include treansf("Y", -72px);
+}
+.img__text.m--in {
+    -webkit-transform: translateX(-520px);
+    transform: translateX(-520px);
+}
+
+.content {
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 900px;
+    height: 550px;
+    margin: -300px 0 0 -450px;
+    background: #fff;
+    .form {
+        /* display: flex; */
+        position: relative;
+        width: 640px;
+        height: 100%;
+        @include transit(0.6s, ease-in-out);
+        padding: 50px 30px 0;
+    }
+
+    .sign-in {
+        transition-timing-function: ease-out;
+        .forgot-pass {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #cfcfcf;
+            a {
+                color: #cfcfcf;
+            }
+        }
+    }
+    .sub-cont {
+        overflow: hidden;
+        position: absolute;
+        left: 640px;
+        top: 0;
+        width: 900px;
+        height: 100%;
+        padding-left: 260px;
+        background: #fff;
+        @include transit(0.6s, ease-in-out);
+
+        .img {
+            overflow: hidden;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100%;
+            padding-top: 360px;
+            &:before {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 900px;
+                height: 100%;
+                // $bacground-img: url(./images/bg.jpg);
+                background-image:url(../images/bg.jpg);
+                background-size: cover;
+                @include transit(0.6s, ease-in-out);
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+            }
+
+            .img__btn {
+                overflow: hidden;
+                z-index: 2;
+                position: relative;
+                width: 100px;
+                height: 36px;
+                margin: 0 auto;
+                background: transparent;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 15px;
+                cursor: pointer;
+                &:after {
+                    content: "";
+                    z-index: 2;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 2px solid #fff;
+                    border-radius: 30px;
+                }
+                span {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    @include transit(0.6s, "");
+                }
+                // span.m--in {
+                //     -webkit-transform: translateY(-72px);
+                //     transform: translateY(-72px);
+                // }
+            }
+          
+            
+            .img__text {
+                z-index: 2;
+                position: absolute;
+                left: 0;
+                top: 50px;
+                width: 100%;
+                padding: 0 20px;
+                text-align: center;
+                color: #fff;
+                @include transit(0.6s, ease-in-out);
+                h2 {
+                    margin-bottom: 10px;
+                    font-weight: normal;
+                }
+                p {
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+    .sign-up {
+        @include transl3d(-900px, 0, 0);
+    }
+}
+
+.content.s--signup {
+    .sign-in {
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.6s;
+        -webkit-transform: translate3d(640px, 0, 0);
+        transform: translate3d(640px, 0, 0);
+    }
+    .img__btn {
+        span.m--in {
+            @include treansf("Y", 0);
+        }
+        span.m--up {
+            @include treansf("Y", 72px);
+        }
+    }
+    .sign-up {
+        @include transl3d(0, 0, 0);
+    }
+    .img:before {
+        @include transl3d(640px, 0, 0);
+        // -webkit-transform: translate3d(640px, 0, 0);
+        // transform: translate3d(640px, 0, 0);
+    }
+    .img__text.m--in {
+        @include treansf("X", 0);
+        // -webkit-transform: translateX(-520px);
+        // transform: translateX(-520px);
+    }
+    .img__text.m--up {
+        @include treansf("X",520px);
+        // -webkit-transform: translateX(520px);
+        // transform: translateX(520px);
+    }
+    .sub-cont {
+        @include transl3d(-640px, 0, 0);
+        // -webkit-transform: translate3d(-640px, 0, 0);
+        // transform: translate3d(-640px, 0, 0);
+    }
+}
+
+.input-val {
+    width: 295px;
+    background: #ffffff;
+    height: 2.8rem;
+    padding: 0 2%;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 1.0625rem;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+h2 {
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+    span {
+        font-size: 12px;
+        color: #909399;
+        text-transform: uppercase;
+    }
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.submit {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: #d4af7a;
+    text-transform: uppercase;
+}
+.fb-btn {
+    border: 2px solid #d3dae9;
+    color: #8fa1c7;
+    span {
+        font-weight: bold;
+        color: #455a81;
+    }
+}
